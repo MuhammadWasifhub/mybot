@@ -17,22 +17,24 @@ def calculate_adx(df, period=14):
     dx = (abs(plus_di - minus_di) / (plus_di + minus_di)) * 100
     adx = dx.rolling(window=period).mean()
 
-     # Calculate final signal
+    # Calculate final signal
     adx_value = adx.iloc[-1]
     plus_di_value = plus_di.iloc[-1]
     minus_di_value = minus_di.iloc[-1]
-
-    signal = "NO SIGNAL"
 
     if adx_value > 25:
         if plus_di_value > minus_di_value:
             signal = "LONG"
         elif minus_di_value > plus_di_value:
             signal = "SHORT"
+    else:
+        signal = None
 
     return {
         "adx": round(adx.iloc[-1], 2),
         "plus_di": round(plus_di.iloc[-1], 2),
         "minus_di": round(minus_di.iloc[-1], 2),
         "signal": signal,
-}
+    }
+    
+#All good now and pushed
