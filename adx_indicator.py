@@ -16,6 +16,8 @@ def calculate_adx(df, period=14):
 
     dx = (abs(plus_di - minus_di) / (plus_di + minus_di)) * 100
     adx = dx.rolling(window=period).mean()
+    
+    signal = "NO SIGNAL"
 
     # Calculate final signal
     adx_value = adx.iloc[-1]
@@ -36,5 +38,3 @@ def calculate_adx(df, period=14):
         "minus_di": round(minus_di.iloc[-1], 2),
         "signal": signal,
     }
-    
-#All good now and pushed
