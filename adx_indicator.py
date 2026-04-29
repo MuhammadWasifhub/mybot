@@ -25,7 +25,8 @@ def calculate_adx(df, period=14):
     plus_di_value = plus_di.iloc[-1]
     minus_di_value = minus_di.iloc[-1]
     
-    signal = None
+    signal = "NO SIGNAL"
+    
     if adx_value > 25:
         if plus_di_value > minus_di_value:
             signal = "LONG"
@@ -38,5 +39,3 @@ def calculate_adx(df, period=14):
         "minus_di": round(minus_di.iloc[-1], 2),
         "signal": signal,
     }
-
-All good now push
